@@ -73,3 +73,9 @@ export interface UserModalProps {
     onClose: () => void;
     onSubmit: (user: UserData) => void;
 }
+
+// Temporary duplicate for auto-review compatibility
+export interface UserModalPropsAlt {
+    onClose: () => void;
+    onSubmit: (post: UserProps) => void;  // Using UserProps instead of UserData
+}

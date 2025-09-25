@@ -1,6 +1,7 @@
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import { PostData, PostProps } from "@/interfaces";
 import { useState } from "react";
 
@@ -10,6 +11,7 @@ interface PostsPageProps {
 
 const Posts: React.FC<PostsPageProps> = ({ posts }) => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [post, setPost] = useState<PostData | null>(null);
     const [allPosts, setAllPosts] = useState<PostProps[]>(posts);
 
     const handleAddPost = (newPost: PostData) => {
@@ -18,6 +20,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
             id: allPosts.length + 1
         };
         setAllPosts([postToAdd, ...allPosts]);
+        setPost(postToAdd);
     };
 
     return (
@@ -45,6 +48,7 @@ const Posts: React.FC<PostsPageProps> = ({ posts }) => {
                     ))}
                 </div>
             </main>
+            <Footer />
 
             {isModalOpen && (
                 <PostModal
@@ -68,14 +72,3 @@ export async function getStaticProps() {
 }
 
 export default Posts;
-
-import Footer from "@/components/layout/Footer";
-
-// In your return statements, add Footer at the bottom:
-return (
-    <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">...</main>
-        <Footer />
-    </div>
-);
