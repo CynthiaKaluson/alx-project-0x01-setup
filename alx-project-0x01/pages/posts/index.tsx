@@ -68,3 +68,14 @@ export async function getStaticProps() {
 }
 
 export default Posts;
+
+import Footer from "@/components/layout/Footer";
+
+// In your return statements, add Footer at the bottom:
+return (
+    <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">...</main>
+        <Footer />
+    </div>
+);
